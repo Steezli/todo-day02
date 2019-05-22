@@ -1,21 +1,22 @@
 import Component from './Component.js';
+import TodoItem from './TodoItem.js';
 
 class TodoList extends Component {
 
     render() {
+        const dom = this.renderDOM();
         const todos = this.props.todos;
-        console.log(todos);
+
+        todos.forEach(todo => {
+            const todoItem = new TodoItem({ todo });
+            const todoItemDOM = todoItem.render();
+            dom.appendChild(todoItemDOM);
+        });
     }
 
     renderTemplate() {
         return /*html*/`
-            <ul id="todo">
-                <li>
-                    <label>
-                        <input type="checkbox" name="task">learn templates
-                    </label>
-                </li>
-            </ul>
+            <ul id="todo"></ul>
         `;
     }
 }

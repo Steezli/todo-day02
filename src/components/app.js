@@ -18,6 +18,7 @@ class App extends Component {
         };
 
         const todoList = new TodoList(props);
+        console.log(todoList);
         const todoListDOM = todoList.render();
         main.appendChild(todoListDOM);
     }
@@ -27,7 +28,7 @@ class App extends Component {
         <div>
             
             <main>
-            
+
             </main>
         </div>
         `;

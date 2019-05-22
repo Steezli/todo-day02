@@ -1,1 +1,2 @@
-import htmlToDOM from '../src/html-to-DOM.js';
+import './html-equal.js';
+import './todo-template.test.js';
