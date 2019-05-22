@@ -8,7 +8,6 @@ class Component {
     render() {
         return this.renderDOM();
     }
-
     renderDOM() {
         const html = this.renderTemplate();
         const dom = htmlToDOM(html);
