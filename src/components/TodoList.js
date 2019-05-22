@@ -12,6 +12,7 @@ class TodoList extends Component {
             const todoItemDOM = todoItem.render();
             dom.appendChild(todoItemDOM);
         });
+        return dom;
     }
 
     renderTemplate() {

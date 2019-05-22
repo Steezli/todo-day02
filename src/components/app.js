@@ -2,6 +2,7 @@ import todos from '../../data/todos.js';
 import Component from './Component.js';
 import Header from './Header.js';
 import TodoList from './TodoList.js';
+import AddTodo from './AddTodo.js';
 
 class App extends Component {
 
@@ -17,18 +18,30 @@ class App extends Component {
             todos: todos
         };
 
+        const addTodo = new AddTodo({
+            onAdd: (newTodo) => {
+                todos.unshift(newTodo);
+                todoList.update({ todos });
+            }
+
+        });
+        const addTodoDOM = addTodo.render();
+        main.appendChild(addTodoDOM);
+
         const todoList = new TodoList(props);
         console.log(todoList);
         const todoListDOM = todoList.render();
+        console.log(todoListDOM);
         main.appendChild(todoListDOM);
+
+
+        return dom;
     }
 
     renderTemplate() {
         return /*html*/`
         <div>
-            
             <main>
-
             </main>
         </div>
         `;
