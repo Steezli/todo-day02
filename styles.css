@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    background-color: teal;
+}
+
+h1 {
+    color: greenyellow;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    border: 2px solid blue;
+}
