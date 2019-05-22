@@ -29,9 +29,7 @@ class App extends Component {
         main.appendChild(addTodoDOM);
 
         const todoList = new TodoList(props);
-        console.log(todoList);
         const todoListDOM = todoList.render();
-        console.log(todoListDOM);
         main.appendChild(todoListDOM);
 
 
