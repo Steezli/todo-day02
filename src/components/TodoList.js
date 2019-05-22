@@ -2,6 +2,11 @@ import Component from './Component.js';
 
 class TodoList extends Component {
 
+    render() {
+        const todos = this.props.todos;
+        console.log(todos);
+    }
+
     renderTemplate() {
         return /*html*/`
             <ul id="todo">
