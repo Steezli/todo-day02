@@ -1,15 +1,15 @@
 const todos = [
     {
-        'task': 'learn templates',
-        'completed': true
+        task: 'learn templates',
+        completed: false
     },
     {
-        'task': 'learn forEach',
-        'completed': false
+        task: 'learn forEach',
+        completed: false
     },
     {
-        'task': 'add header using htmlToDOM',
-        'completed': true
+        task: 'add header using htmlToDOM',
+        completed: false
     }
 ];
 

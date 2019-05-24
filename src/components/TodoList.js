@@ -5,14 +5,18 @@ class TodoList extends Component {
 
     render() {
         const dom = this.renderDOM();
+
         const todos = this.props.todos;
+        const onDone = this.props.onDone;
 
         todos.forEach(todo => {
-            const todoItem = new TodoItem({ todo });
+            const todoItem = new TodoItem({ todo, onDone });
             const todoItemDOM = todoItem.render();
             dom.appendChild(todoItemDOM);
         });
+
         return dom;
+        
     }
 
     renderTemplate() {
