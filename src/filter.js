@@ -4,13 +4,11 @@ function filterTodos(todos, filter) {
         const task = todo
             .task
             .toLowerCase()
-            .includes(filter.text.toLowerCase());
+            .includes(filter.text);
         
-        // const filterCompleted = filter.completed.toString();
         const todoCompleted = todo.completed.toString();
         
         let completed = todoCompleted.includes(filter.completed);
-        // const completed = !filter.completed || todo.completed === filter.completed;
         
         if(filter.completed === 'all') {
             completed = true;
