@@ -1,50 +1,44 @@
 import Component from './Component.js';
 
 class Filter extends Component {
-
+    
     render() {
         const dom = this.renderDOM();
-        const text = dom.querySelector('.text');
-        const radioButtons = dom.querySelectorAll('.radio');
-        text.addEventListener('input', () => {
+        const form = dom.querySelector('form');
 
+        form.addEventListener('input', () => {
+            const checkedRadio = form.elements['status'].value;
+            const textResult = form.elements['text'].value;
             this.props.onFilter({
-                text: text.value,
-                completed: ''
+                task: textResult,
+                radio: checkedRadio
             });
         });
-        
-        radioButtons.forEach(button => {
-            button.addEventListener('input', () => {
-                this.props.onFilter({
-                    text: '',
-                    completed: button.value
-                });
-                
-            });
-            
-        });
-        
+
         return dom;
     }
     
     renderTemplate() {
         return /*html*/`
-            <section>
-                <label>
-                    Search tasks:<input class="text">
-                </label>
-                <label>
-                    <input class="radio" type="radio" name="radio" value="all">All
-                </label>
-                <label>
-                    <input class="radio" type="radio" name="radio" value="false">Not Done
-                </label>
-                <label>
-                    <input class="radio" type="radio" name="radio" value="true">Completed
-                </label>
-            </section>
-            `;
+            <div id="filters">  
+                <form id="filter">
+                    <section>
+                        <input id="text" type="text" name="text" id="textFilter" placeholder="Search todo list:">
+                    </section>
+                    <section id="radios">
+                        <label>All
+                            <input id="all" name="status" type="radio" value="all" class="radio" checked>
+                        </label>
+                        <label>Complete
+                            <input id="complete" name="status" type="radio" value="true" class="radio">
+                        </label>
+                        <label>Incomplete
+                            <input id="incomplete" name="status" type="radio" value="false" class="radio">
+                        </label>
+                    </section>
+                </form>
+            </div>
+        `;
     }
 }
 
