@@ -23,17 +23,17 @@ class Filter extends Component {
             <div id="filters">  
                 <form id="filter">
                     <section>
-                        <input id="text" type="text" name="text" id="textFilter" placeholder="Search todo list:">
+                        <input type="text" name="text" id="textFilter" placeholder="Search:">
                     </section>
-                    <section id="radios">
+                    <section>
                         <label>All
-                            <input id="all" name="status" type="radio" value="all" class="radio" checked>
+                            <input name="status" type="radio" value="all" class="radio" checked>
                         </label>
-                        <label>Complete
-                            <input id="complete" name="status" type="radio" value="true" class="radio">
+                        <label>Completed
+                            <input name="status" type="radio" value="true" class="radio">
                         </label>
                         <label>Incomplete
-                            <input id="incomplete" name="status" type="radio" value="false" class="radio">
+                            <input name="status" type="radio" value="false" class="radio">
                         </label>
                     </section>
                 </form>
