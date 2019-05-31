@@ -1,82 +1,80 @@
-import todos from '../data/todos.js';
 import filterTodos from '../src/filter.js';
-
 const test = QUnit.test;
-QUnit.module('filter');
 
-test('not completed returns not completed', assert => {
+// QUnit.module('filter todos');
+
+const todos = [
+    {
+        task: 'learn templates',
+        completed: true
+    },
+    {
+        task: 'learn forEach',
+        completed: false
+    },
+];
+
+test('return todos with searchParams', assert => {
+    //arrange
+    const filter = {
+        task: 'te',
+        radio: ''
+    };
+
+    //act
+    const expected = filterTodos(todos, filter);
+    //assert
+    assert.deepEqual(expected, [todos[0]]);
+});
+
+test('return all if no filter/on default/refresh', assert => {
     //arrange
     const filter = {
         task: '',
-        completed: false
+        radio: ''
     };
+
     //act
-    const filtered = filterTodos(todos, filter);
+    const expected = filterTodos(todos, filter);
     //assert
-    assert.deepEqual(filtered, [
-        {
-            task: 'learn forEach',
-            completed: false
-        }
-    ]);
+    assert.deepEqual(expected, todos);
+});
+
+test('All returns all', assert => {
+    //arrange
+    const filter = {
+        task: '',
+        radio: 'all'
+    };
+
+    //act
+    const expected = filterTodos(todos, filter);
+    //assert
+    assert.deepEqual(expected, todos);
 });
 
 test('completed returns completed', assert => {
     //arrange
     const filter = {
         task: '',
-        completed: true
+        radio: 'true'
     };
+
     //act
-    const filtered = filterTodos(todos, filter);
+    const result = filterTodos(todos, filter);
     //assert
-    assert.deepEqual(filtered, [
-        {
-            task: 'learn templates',
-            completed: true
-        },
-        {
-            task: 'add header using htmlToDOM',
-            completed: true
-        }
-    ]);
+    assert.deepEqual(result, [todos[0]]);
 });
 
-test('All returns all', assert => {
-    //arrange
-    const filter = {
-        task: 'e',
-        completed: ''
-    };
-    //act
-    const filtered = filterTodos(todos, filter);
-    //assert
-    assert.deepEqual(filtered, todos);
-});
-
-test('empty string returns all tasks', assert => {
+test('incomplete returns all incompleted', assert => {
     //arrange
     const filter = {
         task: '',
-        completed: ''
+        radio: 'false'
     };
-    //act
-    const filtered = filterTodos(todos, filter);
-    //assert
-    assert.deepEqual(filtered, todos);
-});
 
-test('filters tasks by string', assert => {
-    //arrange
-    const filter = {
-        task: 'learn T',
-        completed: ''
-    };
     //act
-    const filtered = filterTodos(todos, filter);
+    const result = filterTodos(todos, filter);
     //assert
-    assert.deepEqual(filtered, [{
-        task: 'learn templates',
-        completed: true
-    }]);
+    assert.deepEqual(result, [todos[1]]);
 });
